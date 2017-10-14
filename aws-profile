@@ -1,0 +1,84 @@
+#!/bin/bash
+### START DESCRIPTION ###
+# Description:
+# This script had been created to switch between meany different AWS accounts
+# (i.e. production, development or test) in easy way.
+#
+# Requirements:
+# This script require to proper working installed aws-cli and profiles configured
+# in files config and credentials in directory ~/.aws
+#
+### STOP DESCRIPTION ###
+### START VARIABLES ###
+PROFILE_NAME="$1"
+OUTPUT_FORMAT="$2"
+### STOP VARIABLES ###
+
+### START FUNCTIONS ###
+function printHelp() {
+echo ""
+echo "========================================aws-profile help========================================="
+echo ""
+echo "This script was wiritten to simplyfy switching between different AWS accounts when you using"
+echo "aws-cli tool to managing AWS infrastructure. To use this script your programatic credentials"
+echo "for each AWS account need to be configured and stored as a separate profile in config and   "
+echo "credentials in your ~/.aws/ directory."
+echo ""
+echo "=======================================example usage========================================="
+echo ""
+echo "Example usage of aws-profile command: aws-profile [profile_name] [output_format]"
+echo ""
+echo "=======================================profile name=========================================="
+echo ""
+echo "First paramenter is profile_name that you want to use. This parameter depends from your AWS"
+echo "profile configuration that was placed in ~/.aws/ directory. For further informations"
+echo "please check your AWS profiles configured in ~/.aws/ directory."
+echo ""
+echo "========================================output format========================================"
+echo ""
+echo "Second parameter is output_format. This will identify how command output will be formated."
+echo "Available options are:"
+echo " * json - programming interface"
+echo " * text - scripting interface"
+echo " * table - human readable"
+echo ""
+echo "============================================================================================="
+echo ""
+}
+
+function setAwsProfile() {
+echo ""
+echo "Enabling AWS profile $PROFILE_NAME ..."
+export AWS_PROFILE=$PROFILE_NAME
+echo "AWS profile $PROFILE_NAME is now active"
+echo ""
+}
+
+function setAwsCliOutput() {
+case $OUTPUT_FORMAT in
+	"json") export AWS_OUTPUT='json'; echo ""; echo "JSON was set as a output format"; echo "";;
+	"text") export AWS_OUTPUT='text'; echo ""; echo "TEXT was set as a output format"; echo "";;
+	"table") export AWS_OUTPUT='table'; echo ""; echo "TABLE was set as a output format"; echo "";;
+	*) export AWS_OUTPUT='json'; echo ""; echo "You choose unwisely. Output format was set do default which is JSON"; echo ""
+esac
+
+}
+### STOP FUNCTIONS ###
+### START SCRIPT ###
+if [ -z "$PROFILE_NAME" ] || [ "$PROFILE_NAME" == "help" ]; then
+	printHelp
+else
+	if [ -n $PROFILE_NAME ]; then
+		if [ -z $OUTPUT_FORMAT ]; then
+			echo ""
+			echo "Output format was not set by user. Applying aws-cli default output format which is JSON"
+			echo ""
+		else
+			setAwsCliOutput
+		fi
+		setAwsProfile
+	else
+		echo "$PROFILE_NAME - file does not exist in $AWSDIR config file"
+	fi
+fi
+### STOP SCRIPT ###
