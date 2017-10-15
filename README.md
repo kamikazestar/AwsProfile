@@ -119,7 +119,7 @@ branching model. More details available [here](http://nvie.com/posts/a-successfu
 
 ## Authors
 
-Initial work: Marcin Słaboński (slabonski.marcin+git@gmail.com)
+Initial work: [Marcin Słaboński](slabonski.marcin+git@gmail.com)
 
 ## Acknowledgments
 
@@ -131,7 +131,7 @@ Below I placed some articles that inspired me to wrote this script:
 
 ## License
 
-I'm using FOSS software on daily basics so this project is also licensed on GPLv3 license, but I not taking any responsibility
+I'm using FOSS software on daily basics so this project is also licensed on MIT license, but I not taking any responsibility
 for results of using this software.
 
 ## TODO
