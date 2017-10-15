@@ -56,10 +56,10 @@ echo ""
 
 function setAwsCliOutput() {
 case $OUTPUT_FORMAT in
-	"json") export AWS_OUTPUT='json'; echo ""; echo "JSON was set as a output format"; echo "";;
-	"text") export AWS_OUTPUT='text'; echo ""; echo "TEXT was set as a output format"; echo "";;
-	"table") export AWS_OUTPUT='table'; echo ""; echo "TABLE was set as a output format"; echo "";;
-	*) export AWS_OUTPUT='json'; echo ""; echo "You choose unwisely. Output format was set do default which is JSON"; echo ""
+	"json") export AWS_DEFAULT_OUTPUT='json'; echo ""; echo "JSON was set as a output format"; echo "";;
+	"text") export AWS_DEFAULT_OUTPUT='text'; echo ""; echo "TEXT was set as a output format"; echo "";;
+	"table") export AWS_DEFAULT_OUTPUT='table'; echo ""; echo "TABLE was set as a output format"; echo "";;
+	*) export AWS_DEFAULT_OUTPUT='json'; echo ""; echo "You choose unwisely. Output format was set do default which is JSON"; echo ""
 esac
 
 }
