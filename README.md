@@ -119,7 +119,7 @@ branching model. More details available [here](http://nvie.com/posts/a-successfu
 
 ## Authors
 
-Initial work: [Marcin Słaboński](slabonski.marcin+git@gmail.com)
+Initial work: [Marcin Słaboński](https://github.com/kamikazestar)
 
 ## Acknowledgments
 
